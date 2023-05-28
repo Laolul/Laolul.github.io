@@ -4,12 +4,12 @@
 
 # Site
 title: Laolu的个人博客
-subtitle: ''
-description: ''
+subtitle: '摆烂中~'
+description: '看看写什么'
 keywords:
-author: Lao
+author: Laolu
 language: zh-CN
-timezone: ''
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -98,10 +98,18 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
-
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: git@github.com:Laolul/Laolul.github.io.git
+  branch: main
+
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
+
 
 
