@@ -1,10 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>单例设计模式</title>
+    <url>/2023/06/03/1%E3%80%81%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<p>单例模式：一个类不管创建多少次对象，永远只能得到该类型一个对象的实例。</p>
+<p>常用到的如，日志模块、数据库模块，使得数据资源的设计和分配得到统一，减少频繁创建对象的资源耗损。</p>
+<p>同时，单例模式还分为以下两种：<br><strong>饿汉式单例模式</strong>：还没有获取实例对象，实例对象就已经产生了<br><strong>懒汉式单例模式</strong>：唯一的实例对象，直到第一次获取它的时候，才产生</p>
+<h2 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h2><h3 id="饿汉式单例模式"><a href="#饿汉式单例模式" class="headerlink" title="饿汉式单例模式"></a>饿汉式单例模式</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 饿汉式单例模式 一定是线程安全的</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">static</span> Singleton* <span class="title">getInstance</span><span class="params">()</span> <span class="comment">// #3 获取类的唯一实例对象的接口方法</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> &amp;instance;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">static</span> Singleton instance; <span class="comment">// #2 定义一个唯一的类的实例对象</span></span><br><span class="line">	<span class="built_in">Singleton</span>() <span class="comment">// #1 构造函数私有化</span></span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">Singleton</span>(<span class="type">const</span> Singleton&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">	Singleton&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Singleton&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Singleton Singleton::instance; <span class="comment">// 外部初始化类的实例对象</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="懒汉式单例模式"><a href="#懒汉式单例模式" class="headerlink" title="懒汉式单例模式"></a>懒汉式单例模式</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 懒汉式单例模式 </span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="type">static</span> Singleton* <span class="title">getInstance</span><span class="params">()</span> <span class="comment">// #3 获取类的唯一实例对象的接口方法</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (instance == <span class="literal">nullptr</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			instance = <span class="keyword">new</span> <span class="built_in">Singleton</span>();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> instance;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="type">static</span> Singleton *instance; <span class="comment">// #2 定义一个唯一的类的实例对象</span></span><br><span class="line">	<span class="built_in">Singleton</span>() <span class="comment">// #1 构造函数私有化</span></span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">Singleton</span>(<span class="type">const</span> Singleton&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">	Singleton&amp; <span class="keyword">operator</span>=(<span class="type">const</span> Singleton&amp;) = <span class="keyword">delete</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Singleton *Singleton::instance = <span class="literal">nullptr</span>; <span class="comment">// 外部初始化类的实例对象</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>23种设计模式</category>
+      </categories>
+      <tags>
+        <tag>23种设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>工厂设计模式</title>
+    <url>/2023/06/05/2%E3%80%81%E5%B7%A5%E5%8E%82%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>23种设计模式</category>
+      </categories>
+      <tags>
+        <tag>23种设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
-    <url>/2023/05/24/hello-world/</url>
+    <url>/2023/06/03/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
@@ -17,10 +53,8 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2023/06/03/1%E3%80%81%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[]]></content>
+      <tags>
+        <tag>23种设计模式</tag>
+      </tags>
   </entry>
 </search>
